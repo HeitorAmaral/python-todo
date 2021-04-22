@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Tarefas</title>
+</head>
+<body>
+<h1>Listagem das Tarefas</h1>
+<a href="{{ url_for('insert') }}">Cadastrar nova Tarefa</a>
+<hr>
+<table border="1" cellspacing="0">
+    <tr>
+        <td>Id</td>
+        <td>Descrição</td>
+        <td>Status</td>
+        <td>Alterar</td>
+        <td>Excluir</td>
+    </tr>
+    {% for task in tasks %}
+        <tr>
+            <td>{{ task._id }}</td>
+            <td>{{ task.description }}</td>
+            <td><input id="check_status" type="checkbox"
+                       onclick="window.location.href='{{ url_for('change_status_by_id', task_id=task._id) }}';"
+                    {% if task.status %} checked {% endif %}></td>
+            <td><a href="/update-by-id/{{ task._id }}">Editar</a></td>
+            <td><a href="/delete-by-id/{{ task._id }}">X</a></td>
+        </tr>
+    {% endfor %}
+</table>
+<hr>
+<a href="{{ url_for('index') }}">Voltar para a tela inicial</a>
+</body>
+</html>

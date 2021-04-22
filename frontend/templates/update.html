@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Atualizar Tarefa</title>
+</head>
+<body>
+<h1>Atualizar uma Tarefa</h1>
+<hr>
+<form action="" method="POST">
+    <table>
+        <tr>
+            <td>Descrição:</td>
+            <td><input type="text" name="description" value="{{ task.description }}"></td>
+        </tr>
+        {% if message != '' %}
+            {{ message }}
+        {% endif %}
+    </table>
+    <br>
+    <input type="submit" value="Salvar alterações">
+</form>
+<hr>
+<a href="{{ url_for('find_all') }}">Cancelar e Voltar para a tela de listagem</a>
+</body>
+</html>
